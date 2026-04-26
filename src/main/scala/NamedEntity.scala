@@ -74,3 +74,25 @@ class Place(text: String) extends NamedEntity(text){
 class Technology(text: String) extends NamedEntity(text){
   def entityType : String = "Technology"
 }
+
+/**
+ * Subclase Concreta 'Programminglanguage' de la Clase Concreta 'Technology' que 
+ * identifica nombres de Lenguajes de Programación.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class ProgrammingLanguage(text: String) extends Technology(text){
+  override def entityType : String = "ProgrammingLanguage"
+}
+
+// =====================================================================
+// Luego de implementar las clases, este código debe compilar:
+//
+//   val entities: List[NamedEntity] = List(
+//     new Person("Alan Turing"),
+//     new University("MIT"),
+//     new ProgrammingLanguage("Scala"),
+//     new Place("San Francisco")
+//   )
+//   entities.foreach(e => println(e.describe))
+// =====================================================================

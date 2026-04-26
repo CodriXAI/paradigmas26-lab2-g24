@@ -37,3 +37,12 @@ abstract class NamedEntity(val text: String) {
 class Person(text: String) extends NamedEntity(text){
   def entityType : String = "Person"
 }
+
+/**
+ * Clase Concreta 'Organization' que identifica nombres de Organizaciones.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class Organization(text: String) extends NamedEntity(text){
+  def entityType : String = "Organization"
+}

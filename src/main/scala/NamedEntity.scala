@@ -65,3 +65,12 @@ class University(text: String) extends Organization(text){
 class Place(text: String) extends NamedEntity(text){
   def entityType : String = "Place"
 }
+
+/**
+ * Clase Concreta 'Technology' que identifica nombres de Tecnologías.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class Technology(text: String) extends NamedEntity(text){
+  def entityType : String = "Technology"
+}

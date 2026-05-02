@@ -31,8 +31,15 @@ object Formatters {
    *   Si no se detectaron entidades, mostrar un mensaje indicándolo.
    */
   def formatNERResult(postTitle: String, entities: List[NamedEntity]): String = {
-    ???
-  }
+    println(s"Descargando posts de: $url")
+    
+    println(s"Post: $postTitle")
+    if (entities.isEmpty) {
+      println("(sin entedidades detectadas)")
+    } else {
+      println("Entidades detectadas:")
+      entities.foreach(e => println(e.describe))
+    }
 
   /**
    * Formatea un resumen de estadísticas de entidades por tipo.

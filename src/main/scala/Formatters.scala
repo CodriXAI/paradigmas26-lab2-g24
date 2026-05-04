@@ -63,6 +63,19 @@ object Formatters {
    *     University: 2
    */
   def formatEntityStats(counts: Map[String, Int]): String = {
-    ???
+    // titulo del string
+    val titulo = "=== Estadísticas de entidades ===\n\n"
+
+    // cuerpo del string
+    // 1. se convierte el mapa a una lista de tuplas (entityType, count)
+    // 2. ordena la lista por count de mayor a menor
+    // 3. y se convierte cada tupla a un string "entityType: count"
+    val cuerpo = counts.toList
+      .sortBy { case (_, count) => -count }
+      .map { case (entityType, count) => s"$entityType: $count" }
+      .mkString("\n")
+
+    // se une y retorna el string
+    titulo + cuerpo
   }
 }

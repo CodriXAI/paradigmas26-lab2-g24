@@ -60,6 +60,13 @@ object Analyzer {
    *                 )
    */
   def countByType(entities: List[NamedEntity]): Map[String, Int] = {
-    ???
+    // 1. se agrupan cada entidad por su tipo 
+    // 2. se procede a recorrer cada tupla (entityType, list)
+    // 3. y se retorna un nuevo mapa con el tipo de entidad 
+    //  y la cantidad de apariciones (tamaño de la lista)
+    entities.groupBy(entidad => entidad.entityType).map { 
+      case (entityType, list) => 
+        (entityType, list.size) 
+    }
   }
 }

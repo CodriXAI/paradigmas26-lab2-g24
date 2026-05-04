@@ -39,8 +39,8 @@ object Formatters {
     } else {
 /*       println(s"Entidades detectadas:")
       entities.foreach(e => (e.describe)) */
-      s"Entidades dectectadas : \n" +
-      entities.map(e => s"${e.describe}").mkString
+      s"Entidades detectadas : \n" +
+      entities.map(e => s"  ${e.describe}").mkString("\n")
     }
   }
 

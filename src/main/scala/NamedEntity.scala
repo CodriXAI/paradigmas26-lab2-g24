@@ -29,21 +29,63 @@ abstract class NamedEntity(val text: String) {
   def describe: String = s"[$entityType] $text"
 }
 
+/**
+ * Clase Concreta 'Person' que identifica nombres de Personas.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class Person(text: String) extends NamedEntity(text){
+  def entityType : String = "Person"
+}
+
+/**
+ * Clase Concreta 'Organization' que identifica nombres de Organizaciones.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class Organization(text: String) extends NamedEntity(text){
+  def entityType : String = "Organization"
+}
+
+/**
+ * Subclase Concreta 'University' de la Clase Concreta 'Organization' que identifica 
+ * nombres de Universidades.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class University(text: String) extends Organization(text){
+  override def entityType : String = "University"
+}
+
+/**
+ * Clase Concreta 'Place' que identifica nombres de Lugares.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class Place(text: String) extends NamedEntity(text){
+  def entityType : String = "Place"
+}
+
+/**
+ * Clase Concreta 'Technology' que identifica nombres de Tecnologías.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class Technology(text: String) extends NamedEntity(text){
+  def entityType : String = "Technology"
+}
+
+/**
+ * Subclase Concreta 'Programminglanguage' de la Clase Concreta 'Technology' que 
+ * identifica nombres de Lenguajes de Programación.
+ *
+ * @param text el texto tal como aparece en el corpus
+ */
+class ProgrammingLanguage(text: String) extends Technology(text){
+  override def entityType : String = "ProgrammingLanguage"
+}
+
 // =====================================================================
-// TODO (Ejercicio 1): Completar la jerarquía de entidades
-//
-// Implementar las clases faltantes.
-//
-// Jerarquía esperada:
-//
-//   NamedEntity
-//   ├── Person
-//   ├── Organization
-//   │   └── University
-//   ├── Place
-//   └── Technology
-//       └── ProgrammingLanguage
-//
 // Luego de implementar las clases, este código debe compilar:
 //
 //   val entities: List[NamedEntity] = List(

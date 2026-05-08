@@ -36,7 +36,7 @@ object Formatters {
 
     // 2. cuerpo del string
     val cuerpo = if (entities.isEmpty) {
-      s"(sin entedidades detectadas)\n"
+      s"(sin entidades detectadas)\n"
     } else {
       s"Entidades detectadas : \n\n" +
       entities.map(e => s"  ${e.describe}").mkString("\n\n")

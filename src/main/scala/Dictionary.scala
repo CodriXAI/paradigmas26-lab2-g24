@@ -1,6 +1,7 @@
 // =====================================================================
 // Ejercicio 2: Cargar diccionarios de entidades
 // =====================================================================
+import FileIO._
 
 /**
  * Responsable de cargar colecciones de entidades nombradas desde archivos.
@@ -38,7 +39,16 @@ object Dictionary {
    *
    */
   def loadFromFile(filePath: String, entityType: String): List[NamedEntity] = {
-    ???
+    readLines(filePath).map{
+      s => entityType match {
+        case "Person" => new Person(s)
+        case "Organization" => new Organization(s)
+        case "University" => new University(s)
+        case "Place" => new Place(s)
+        case "Technology" => new Technology(s)
+        case "ProgrammingLanguage" => new ProgrammingLanguage(s)
+      }
+    }
   }
 
   /**
@@ -50,6 +60,19 @@ object Dictionary {
    *
    */
   def loadAll(): List[NamedEntity] = {
-    ???
+    val pathList: Set[(String, String)] = Set (
+      ("data/languages.txt", "ProgrammingLanguage"),
+      ("data/organizations.txt", "Organization"),
+      ("data/people.txt", "Person"),
+      ("data/places.txt", "Place"),
+      ("data/universities.txt", "University")
+    )
+
+    val allEntities = pathList.foldLeft(List[NamedEntity]())(
+      (listSum, pathEntity) 
+      => 
+      listSum ++ loadFromFile(pathEntity._1, pathEntity._2)
+    )
+    allEntities
   }
 }

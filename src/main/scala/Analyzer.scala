@@ -59,14 +59,18 @@ object Analyzer {
    *                   "University"          -> 1
    *                 )
    */
-  def countByType(entities: List[NamedEntity]): Map[String, Int] = {
-    // 1. se agrupan cada entidad por su tipo 
-    // 2. se procede a recorrer cada tupla (entityType, list)
-    // 3. y se retorna un nuevo mapa con el tipo de entidad 
-    //  y la cantidad de apariciones (tamaño de la lista)
-    entities.groupBy(entidad => entidad.entityType).map { 
-      case (entityType, list) => 
-        (entityType, list.size) 
+  def countByType(entities: List[NamedEntity]): Map[String, Int] = {    
+    // 1. Validacion de seguridad: Si la lista de entidades es nula,
+    //    retornamos un mapa vacío
+    if (entities == null) return Map.empty 
+    
+    // 2. Procesamiento: Filtramos las entidades nulas o con tipo nulo o vacio,
+    //    eliminamos duplicados, agrupamos por tipo y contamos
+    entities
+      .filter(e=> e != null && e.entityType != null && e.entityType.nonEmpty)
+      .distinct
+      .groupBy(e => e.entityType)
+      .map { case (entityType, list) => (entityType, list.size) 
     }
   }
 }

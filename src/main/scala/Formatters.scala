@@ -34,15 +34,18 @@ object Formatters {
     // 1. titulo del string
     val titulo = s"Post: $postTitle\n\n"
 
-    // 2. cuerpo del string
-    val cuerpo = if (entities.isEmpty) {
+    // 2. detectamos entidades que aparecen en el título
+    val entidadesReales = Analyzer.detectEntities(postTitle, entities)
+    
+    // 3. cuerpo del string
+    val cuerpo = if (entidadesReales.isEmpty) {
       s"(sin entidades detectadas)\n"
     } else {
       s"Entidades detectadas : \n\n" +
-      entities.map(e => s"  ${e.describe}").mkString("\n\n")
+      entidadesReales.map(e => s"  ${e.describe}").mkString("\n\n")
     }
 
-    // 3. se une y retorna el string
+    // 4. se une y retorna el string
     titulo + cuerpo
   }
 

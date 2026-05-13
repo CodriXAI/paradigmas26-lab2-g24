@@ -68,7 +68,7 @@ object Formatters {
   def formatEntityStats(counts: Map[String, Int]): String = {
     // 1. titulo del string y mensaje para el caso sin entidades
     val titulo = "=== Estadísticas de entidades ===\n\n"
-    val emptyMessage = "(sin entidades detectadas)\n"
+    val emptyMessage = "(Sin entidades detectadas)"
  
     // 2. cuerpo del string : se ordena el mapa por cantidad (de mayor a menor)
     //   y se formatea cada línea con el formato "entityType: count"

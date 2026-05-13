@@ -165,17 +165,17 @@ object Analyzer {
    *                 )
    */
   def countByType(entities: List[NamedEntity]): Map[String, Int] = {    
-    // 1. Validacion de seguridad: Si la lista de entidades es nula,
-    //    retornamos un mapa vacío
-    if (entities == null) return Map.empty 
-    
-    // 2. Procesamiento: Filtramos las entidades nulas o con tipo nulo o vacio,
-    //    eliminamos duplicados, agrupamos por tipo y contamos
-    entities
-      .filter(e=> e != null && e.entityType != null && e.entityType.nonEmpty)
-      .distinct
-      .groupBy(e => e.entityType)
-      .map { case (entityType, list) => (entityType, list.size) 
+
+    entities match { 
+      // 1. vaidacion de seguridad: Si la lista de entidades es nula
+      case null | Nil => Map.empty
+      // 2. procesamiento: Filtramos las entidades nulas o con tipo nulo 
+      // o vacio, eliminamos duplicados, agrupamos por tipo y contamos
+      case xs => entities
+        .filter(e=> e != null && e.entityType != null && e.entityType.nonEmpty)
+        .groupBy(e => e.entityType)
+        .map { case (entityType, list) => (entityType, list.size) }
     }
   }
+
 }

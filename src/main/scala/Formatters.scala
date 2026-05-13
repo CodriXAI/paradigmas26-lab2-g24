@@ -79,5 +79,6 @@ object Formatters {
     }
     // 3. se une y retorna el string
     titulo + cuerpo
+  }
   
 }

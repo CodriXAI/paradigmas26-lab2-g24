@@ -45,4 +45,12 @@ object Main {
     println(Formatters.formatEntityStats(stats))
 
   }
+
+  /*
+    ¿Por qué flatMap y flatten?
+    Lo que está pasando es que el map interno devuelve List[NamedEntity] 
+    por cada título, entonces el map externo devuelve List[List[List[NamedEntity]]]. 
+    El flatMap aplana un nivel, dejándote List[List[NamedEntity]], 
+    y después flatten aplana el segundo nivel quedando List[NamedEntity].
+  */
 }
